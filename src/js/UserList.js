@@ -1,14 +1,23 @@
 import React, {Component}  from 'react';
-import ReactDOM from 'react-dom';
-import '../css/index.css';
+import UserRow from './UserRow'
 
-class UserList extends Component {
+
+export default class UserList extends Component {
+
 
     render() {
-        return(
-            <div>User</div>
+
+        let listItem = this.props.users.map((el) => {
+            return <UserRow key={el.id} value={el} showCurrentUser={this.props.showCurrentUser} deleteUser={this.props.deleteUser}/>
+        });
+
+        return (
+            <div>
+                <ul>
+                    {listItem}
+                </ul>
+            </div>
         )
     }
-};
+}
 
-export {UserList};

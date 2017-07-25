@@ -1,7 +1,7 @@
 import React, {Component}  from 'react';
 import ReactDOM from 'react-dom';
 import '../css/index.css';
-import {MainLayout} from  './MainLayout'
+import MainLayout from  './MainLayout'
 
 
 
@@ -12,7 +12,7 @@ class App extends Component {
             <MainLayout/>
         )
     }
-};
+}
 
 ReactDOM.render(
     <App/>,
