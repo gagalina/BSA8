@@ -21,6 +21,7 @@
     "bootstrap": "^3.3.7",
     "bootstrap-css": "^4.0.0-alpha.5",
     "css-loader": "^0.28.4",
+    "lodash": "^4.17.4",
     "node-sass": "^4.5.3",
     "postcss-loader": "^2.0.6",
     "react": "^15.6.1",

@@ -3,6 +3,7 @@ import '../css/index.sass';
 import NewUserField from './NewUserField';
 import UserList from './UserList';
 import User from './User';
+import _ from 'lodash';
 
 
 export default class MainLayout extends Component {
@@ -23,49 +24,62 @@ export default class MainLayout extends Component {
                     name: "Christopher Nolan",
                     id: 3
                 }],
-            currentUser: {},
+            currentUser: {
+                name: "John Snow",
+                id: 1
+            }
         };
-    };
-
-    componentWillMount() {
-        let user = this.state.users[0];
-        this.setState(() => {
-            Object.assign(this.state.currentUser, user);
-        });
-    };
+    }
 
     shouldComponentUpdate(nextState) {
-        return (this.state.users !== nextState.users)
+        return !_.isEqual(this.state, nextState)
     }
 
     showCurrentUser(id) {
         let currentUser = this.state.users.find((el) => {
             return (el.id === id)
         });
-        this.setState(() => {
-            Object.assign(this.state.currentUser, currentUser);
+        this.setState({
+            currentUser: currentUser
         });
-    };
+    }
+    ;
 
     addNewUser(newUser) {
-        let userArray = this.state.users;
+        let userArray = this.state.users.slice();
         userArray.push(newUser);
-        this.setState(() => {
-            Object.assign(this.state.users, userArray);
+        this.setState({
+            users: userArray,
+            currentUser: userArray[0]
         });
-    };
+    }
+    ;
 
 
     deleteUser(id) {
-        let userArray = this.state.users;
+        let userArray = this.state.users.slice();
         let userIndex = null;
+
         this.state.users.map((el, index) => {
-             (el.id === id) ? userIndex = index : null;
+            (el.id === id) ? userIndex = index : null;
         });
+
         userArray.splice(userIndex, 1);
-        this.setState(() => {
-            Object.assign(this.state.users, userArray);
-        });
+
+        let updatedState = {
+            users: userArray
+        };
+
+        if (this.state.currentUser.id === id) {
+            updatedState['currentUser'] = userArray.length >= 1 ? userArray[0] : {
+                name: null,
+                id: null
+            };
+        }
+
+        this.setState(
+            updatedState
+        );
     }
 
     render() {
@@ -81,7 +95,8 @@ export default class MainLayout extends Component {
             </div>
 
         )
-    };
+    }
+    ;
 };
 
 
