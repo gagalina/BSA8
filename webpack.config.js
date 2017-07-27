@@ -61,7 +61,43 @@ module.exports = {
                         presets: ['es2015', 'react']
                     }
                 }
-            }
+            },
+            {
+                test: /\.(woff|woff2)(\?v=\d+\.\d+\.\d+)?$/,
+                use: {
+                    loader: 'url-loader'
+                }
+            },
+            {
+                test: /\.ttf(\?v=\d+\.\d+\.\d+)?$/,
+                use: {
+                    loader: 'url-loader'
+                }
+            },
+            {
+                test: /\.eot(\?v=\d+\.\d+\.\d+)?$/,
+                use: {
+                    loader: 'url-loader'
+                }
+            },
+            {
+                test: /\.svg(\?v=\d+\.\d+\.\d+)?$/,
+                use: {
+                    loader: 'url-loader'
+                }
+            },
+            {
+                test: /\.png$/,
+                use: {
+                    loader: 'url-loader'
+                }
+            },
+            {
+                test: /\.jpg$/,
+                use: {
+                    loader: 'file-loader'
+                }
+            },
 
         ]
 

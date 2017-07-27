@@ -1,6 +1,6 @@
 import React, {Component}  from 'react';
 import ReactDOM from 'react-dom';
-import '../css/index.css';
+import '../css/index.sass';
 import MainLayout from  './MainLayout'
 
 

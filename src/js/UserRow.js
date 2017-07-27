@@ -8,8 +8,11 @@ export default class UserRow extends Component {
 
         return (
             <li onClick={() => this.props.showCurrentUser(id)}
-                data-id={this.props.value.id}>{this.props.value.name}
-                <button type="button" onClick={() => this.props.deleteUser(this.props.value.id)}>Delete</button>
+                data-id={this.props.value.id} className="list-group-item">
+                <div className="userContent">
+                    {this.props.value.name}
+                    <button type="button" onClick={() => this.props.deleteUser(this.props.value.id)}>Delete</button>
+                </div>
             </li>
         )
     }

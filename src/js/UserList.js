@@ -1,5 +1,7 @@
 import React, {Component}  from 'react';
 import UserRow from './UserRow'
+import 'bootstrap/dist/css/bootstrap.css'
+
 
 
 export default class UserList extends Component {
@@ -13,7 +15,7 @@ export default class UserList extends Component {
 
         return (
             <div>
-                <ul>
+                <ul className="list-group">
                     {listItem}
                 </ul>
             </div>

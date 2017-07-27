@@ -1,5 +1,5 @@
 import React, {Component}  from 'react';
-import '../css/index.css';
+import '../css/index.sass';
 import NewUserField from './NewUserField';
 import UserList from './UserList';
 import User from './User';
@@ -33,6 +33,10 @@ export default class MainLayout extends Component {
             Object.assign(this.state.currentUser, user);
         });
     };
+
+    shouldComponentUpdate(nextState) {
+        return (this.state.users !== nextState.users)
+    }
 
     showCurrentUser(id) {
         let currentUser = this.state.users.find((el) => {
@@ -70,10 +74,10 @@ export default class MainLayout extends Component {
         let deleteUser = this.deleteUser.bind(this);
 
         return (
-            <div>Hello
+            <div className="main">
+                <User currentUser={this.state.currentUser}/>
                 <UserList users={this.state.users} showCurrentUser={showCurrentUser} deleteUser={deleteUser}/>
                 <NewUserField addNewUser={addNewUser}/>
-                <User currentUser={this.state.currentUser}/>
             </div>
 
         )
